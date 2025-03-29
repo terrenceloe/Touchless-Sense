@@ -16,8 +16,17 @@ Es wurden **zwei Modelle** trainiert und verwendet:
 
 1. **Proximity-Modell (Gestensteuerung)**  
    → Erkennt `wave`, `hover` und `idle` anhand von Proximity-Daten.
-
-2. **Brightness-Modell (Helligkeitserkennung)**  
+   → Trainingsdaten @60 x 3 Sekunden
+   → Windows Size: 2 Sekunden, Frequency: 50 Hz
+   → Processing Block: Spectral Analysis (proximity)
+   → Learning Block: Classification & Anomaly Detection (K-Means)
+   → Genauigkeit: ca. 97,5%
+![image](https://github.com/user-attachments/assets/dfaa0600-4470-420b-a702-d0275d74b21d)
+![image](https://github.com/user-attachments/assets/3a502d4e-5a81-46ad-b6b3-ae4b98575537)
+![image](https://github.com/user-attachments/assets/141ad6c1-8bfd-4707-b750-ff7bd801e810)
+![image](https://github.com/user-attachments/assets/d688f196-c86d-43ea-ba0d-d70bf060ab34)
+ 
+3. **Brightness-Modell (Helligkeitserkennung)**  
    → Erkennt `bright` und `dark` anhand der Umgebungshelligkeit.
 
 Jedes Modell wurde separat in Edge Impulse trainiert, getestet und anschließend als `.zip` exportiert und in Arduino implementiert.
