@@ -7,7 +7,7 @@
 - **Arduino Nano 33 BLE Sense**
 - **APDS9960 Sensor** (für Proximity und Licht)
 - **Eingebaute LEDs**:
-  - **Grüne LED (RGB oben)**: Reaktion auf Handgesten
+  - **Grüne LED (RGB oben)**: Reaktion auf Handgesten (wave/hover)
   - **Orange LED (LED_BUILTIN)**: Reaktion auf Helligkeit (bright/dark)
 
 ## 🧠 Modelle & Funktionsweise
@@ -17,10 +17,14 @@ Es wurden **zwei Modelle** trainiert und verwendet:
 1. **Proximity-Modell (Gestensteuerung)**  
    → Erkennt `wave`, `hover` und `idle` anhand von Proximity-Daten.
 
-2. **Brightness-Modell (Lichterkennung)**  
-   → Erkennt `bright` und `dark` anhand der Umgebungshelligkeit (Clear-Wert).
+2. **Brightness-Modell (Helligkeitserkennung)**  
+   → Erkennt `bright` und `dark` anhand der Umgebungshelligkeit.
 
 Jedes Modell wurde separat in Edge Impulse trainiert, getestet und anschließend als `.zip` exportiert und in Arduino implementiert.
+
+Zum Clonen:
+- Proximity-Modell: https://studio.edgeimpulse.com/public/652063/live
+- Brightness-Modell: https://studio.edgeimpulse.com/public/654614/live
 
 ## 🎯 Funktionen
 
@@ -32,24 +36,29 @@ Jedes Modell wurde separat in Edge Impulse trainiert, getestet und anschließend
 | **Bright**       | Orange LED bleibt aus                           |
 
 ## 💻 Projektstruktur
-
 ```
 Touchless-Sense/
 │
-├── brightness/
-│   └── sketch_mar25b/   → Arduino-Sketch für Brightness-Modell
+├── sketches/
+│   ├── proximity_sketch_mar22a/    → Arduino-Sketch für Proximity-Modell
+│   └── brightness_sketch_mar25b/   → Arduino-Sketch für Brightness-Modell
 │
-├── proximity/
-│   └── sketch_mar22a/   → Arduino-Sketch für Proximity-Modell
+├── arduino-library-zip/
+│   ├── ei-daemon-test-arduino-1.x.x.zip → Edge-Impulse-Modell für Brightness
+│   └── ei-brightness-test-arduino-1.x.x.zip → Edge-Impulse-Modell für Proximity
+
 ```
 
 ## 🛠️ Setup
 
-1. Projekt in Edge Impulse trainieren
-2. Modelle als Arduino Library exportieren
-3. `.ino`-Sketch hochladen
-4. Serial Monitor aktivieren → Vorhersagen & LED-Reaktionen live verfolgen
-
+1. Arduino Nano 33 BLE Sense per USB anschließen
+2. Edge-Impulse-Modell einbinden:
+In der Arduino IDE → Sketch → Include Library → Add .ZIP Library
+→ Je nach Anwendung ei-brightness-test-arduino.zip oder ei-daemon-test-arduino.zip aus dem Ordner arduino-library-zip/ auswählen
+3. Sketch öffnen: z. B. brightness_sketch_mar25b.ino oder proximity_sketch_mar22a.ino im Ordner sketches/
+4. Sketch hochladen
+5. Serial Monitor öffnen (115200 Baud)
+6. Aktion durchführen (wave/hover und bright/dark)
 ## ⚠️ Herausforderungen
 
 - Kombinierte Modelle (Proximity + Brightness) in einem Sketch zu vereinen war problematisch → Konflikte im `model_metadata.h`
