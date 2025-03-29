@@ -90,4 +90,11 @@ In der Arduino IDE → Sketch → Include Library → Add .ZIP Library
 5. Serial Monitor öffnen (115200 Baud)
 6. Aktion durchführen (wave/hover und bright/dark)
 
+## 🎥 Demo-Videos
 
+Die folgenden Videos zeigen den Prototyp in Aktion:
+
+- 👉 [Proximity Demo (wave / hover)](https://drive.google.com/file/d/17kmjsj6iFMn24OGVTc5bqAQKza6dSKnH/view?usp=drive_link)  
+- 💡 [Brightness Demo (bright / dark)](https://drive.google.com/file/d/17BORbsiu8hMgBPGUS8msp1BsJwzk-Pwl/view?usp=drive_link)
+
+> Die Videos sind öffentlich auf Google Drive verfügbar.
