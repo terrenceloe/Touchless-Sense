@@ -15,31 +15,39 @@
 Es wurden **zwei Modelle** trainiert und verwendet:
 
 1. **Proximity-Modell (Gestensteuerung)**  
-   → Erkennt `wave`, `hover` und `idle` anhand von Proximity-Daten.
-   → Trainingsdaten @60 x 3 Sekunden
-   → Windows Size: 2 Sekunden, Frequency: 50 Hz
-   → Processing Block: Spectral Analysis (proximity)
-   → Learning Block: Classification & Anomaly Detection (K-Means)
-   → Genauigkeit: 97,5%
+   → Erkennt `wave`, `hover` und `idle` anhand von Proximity-Daten  
+   → Trainingsdaten: `@60 x 3 Sekunden`  
+   → Window Size: `2 Sekunden`, Frequency: `50 Hz`  
+   → Processing Block: `Spectral Analysis (proximity)`  
+   → Learning Block: `Classification & Anomaly Detection (K-Means)`  
+   → Genauigkeit: `97,5%`
 ![image](https://github.com/user-attachments/assets/dfaa0600-4470-420b-a702-d0275d74b21d)
 ![image](https://github.com/user-attachments/assets/3a502d4e-5a81-46ad-b6b3-ae4b98575537)
 ![image](https://github.com/user-attachments/assets/141ad6c1-8bfd-4707-b750-ff7bd801e810)
-![image](https://github.com/user-attachments/assets/d688f196-c86d-43ea-ba0d-d70bf060ab34)
 ![image](https://github.com/user-attachments/assets/8ba4660f-91e1-4c86-9696-1b043d9113e7)
+![image](https://github.com/user-attachments/assets/d688f196-c86d-43ea-ba0d-d70bf060ab34)
+
 
  
 3. **Brightness-Modell (Helligkeitserkennung)**  
-   → Erkennt `bright` und `dark` anhand der Umgebungshelligkeit.
-   → Trainingsdaten @30 x 10 Sekunden
-   → Windows Size: 1 Sekunde, Frequency: 50 Hz
-   → Processing Block: Spectral Analysis (brightness)
-   → Learning Block: Classification & Anomaly Detection (K-Means)
-   → Genauigkeit: 99,9%
+   → Erkennt `bright` und `dark` anhand der Umgebungshelligkeit  
+   → Trainingsdaten: `@30 x 10 Sekunden`  
+   → Window Size: `1 Sekunde`, Frequency: `50 Hz`  
+   → Processing Block: `Spectral Analysis (brightness)`  
+   → Learning Block: `Classification & Anomaly Detection (K-Means)`  
+   → Genauigkeit: `99,9%`
 ![image](https://github.com/user-attachments/assets/e729d505-8bed-4fbd-9d11-d76e2efdc7d8)
 ![image](https://github.com/user-attachments/assets/6f53a67c-9a02-4628-a960-69738e3b88b2)
 ![image](https://github.com/user-attachments/assets/6872fa6f-b470-4a04-9a5e-09e91d9f18de)
-![image](https://github.com/user-attachments/assets/d25e56f5-d11a-4014-ba8a-058b4d0ed84c)
 ![image](https://github.com/user-attachments/assets/3e9d5cd2-937a-40e6-8089-41a81ae18f08)
+![image](https://github.com/user-attachments/assets/d25e56f5-d11a-4014-ba8a-058b4d0ed84c)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 Jedes Modell wurde separat in Edge Impulse trainiert, getestet und anschließend als `.zip` exportiert und in Arduino implementiert.
 ![image](https://github.com/user-attachments/assets/98ba84d2-b132-4369-927f-075cb22a9c3c)
