@@ -7,7 +7,7 @@
 - **Arduino Nano 33 BLE Sense**
 - **APDS9960 Sensor** (für Proximity und Licht)
 - **Eingebaute LEDs**:
-  - **Grüne LED (RGB oben)**: Reaktion auf Handgesten (wave/hover)
+  - **Blaue LED (RGB oben)**: Reaktion auf Handgesten (wave/hover)
   - **Orange LED (LED_BUILTIN)**: Reaktion auf Helligkeit (bright/dark)
 
 ## 🧠 Modelle & Funktionsweise
@@ -20,16 +20,29 @@ Es wurden **zwei Modelle** trainiert und verwendet:
    → Windows Size: 2 Sekunden, Frequency: 50 Hz
    → Processing Block: Spectral Analysis (proximity)
    → Learning Block: Classification & Anomaly Detection (K-Means)
-   → Genauigkeit: ca. 97,5%
+   → Genauigkeit: 97,5%
 ![image](https://github.com/user-attachments/assets/dfaa0600-4470-420b-a702-d0275d74b21d)
 ![image](https://github.com/user-attachments/assets/3a502d4e-5a81-46ad-b6b3-ae4b98575537)
 ![image](https://github.com/user-attachments/assets/141ad6c1-8bfd-4707-b750-ff7bd801e810)
 ![image](https://github.com/user-attachments/assets/d688f196-c86d-43ea-ba0d-d70bf060ab34)
+![image](https://github.com/user-attachments/assets/8ba4660f-91e1-4c86-9696-1b043d9113e7)
+
  
 3. **Brightness-Modell (Helligkeitserkennung)**  
    → Erkennt `bright` und `dark` anhand der Umgebungshelligkeit.
+   → Trainingsdaten @30 x 10 Sekunden
+   → Windows Size: 1 Sekunde, Frequency: 50 Hz
+   → Processing Block: Spectral Analysis (brightness)
+   → Learning Block: Classification & Anomaly Detection (K-Means)
+   → Genauigkeit: 99,9%
+![image](https://github.com/user-attachments/assets/e729d505-8bed-4fbd-9d11-d76e2efdc7d8)
+![image](https://github.com/user-attachments/assets/6f53a67c-9a02-4628-a960-69738e3b88b2)
+![image](https://github.com/user-attachments/assets/6872fa6f-b470-4a04-9a5e-09e91d9f18de)
+![image](https://github.com/user-attachments/assets/d25e56f5-d11a-4014-ba8a-058b4d0ed84c)
+![image](https://github.com/user-attachments/assets/3e9d5cd2-937a-40e6-8089-41a81ae18f08)
 
 Jedes Modell wurde separat in Edge Impulse trainiert, getestet und anschließend als `.zip` exportiert und in Arduino implementiert.
+![image](https://github.com/user-attachments/assets/98ba84d2-b132-4369-927f-075cb22a9c3c)
 
 Zum Clonen:
 - Proximity-Modell: https://studio.edgeimpulse.com/public/652063/live
@@ -68,12 +81,5 @@ In der Arduino IDE → Sketch → Include Library → Add .ZIP Library
 4. Sketch hochladen
 5. Serial Monitor öffnen (115200 Baud)
 6. Aktion durchführen (wave/hover und bright/dark)
-## ⚠️ Herausforderungen
 
-- Kombinierte Modelle (Proximity + Brightness) in einem Sketch zu vereinen war problematisch → Konflikte im `model_metadata.h`
-- Links-/Rechts-Gesten konnten im Proximity-Modell nicht zuverlässig erkannt werden → daher Fokus auf `wave` und `hover`
-- Die Gestenerkennung wurde teilweise durch veränderte Lichtverhältnisse beeinflusst
 
-## ✅ Fazit
-
-Durch getrennte Modelle und gezielte Feature-Auswahl konnte ein stabiler Prototyp entwickelt werden. Die Anwendung zeigt, wie TinyML auch mit einfacher Hardware eine intuitive, berührungslose Steuerung ermöglicht.
